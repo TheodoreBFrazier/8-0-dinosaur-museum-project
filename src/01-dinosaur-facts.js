@@ -22,7 +22,35 @@ const exampleDinosaurData = require("../data/dinosaurs");
  *  getLongestDinosaur(dinosaurs);
  *  //> { Brachiosaurus: 98.43 }
  */
-function getLongestDinosaur(dinosaurs) {}
+
+function getLongestDinosaur(dinosaurs) {
+
+  // First create a guard clause -> if there is no dinosaur at all (!), return an empty object
+  if (!dinosaurs.length) {
+    return {};
+  }
+
+  //First we get the first dinosaur's in the array (dinosaurs) length -> initialize it, supposing it is the tallest
+  let tallestDinosaur = dinosaurs[0].lengthInMeters;
+
+  // key is the variable that will keep track of the key value OUTSIDE the for loop 
+  let key;
+
+  // For loop will skip the first element in array (dinosaurs) and iterate over the redt of the elemtns of the array
+  for (let i = 1; i < dinosaurs.length; i++) {
+  // For EACH dinosaur, check if it is taller than the current iteration of tallestDinosaur 
+    if (dinosaurs[i].lengthInMeters > tallestDinosaur) {
+      // if TRUE, change the calue of the key to the value currently of the name of the dino currently 
+      key = dinosaurs[i].name;
+      //Now change the value of the tallestDino
+      tallestDinosaur = dinosaurs[i].lengthInMeters;
+    }
+  }
+
+  //Now return the oBJECT using bracket notation to return the key and multiply to return to feet.
+  return {[key]:tallestDinosaur * 3.281}
+
+}
 
 /**
  * getDinosaurDescription()
@@ -44,7 +72,7 @@ function getLongestDinosaur(dinosaurs) {}
  *  getDinosaurDescription(dinosaurs, "incorrect-id");
  *  //> "A dinosaur with an ID of 'incorrect-id' cannot be found."
  */
-function getDinosaurDescription(dinosaurs, id) {}
+function getDinosaurDescription(dinosaurs, id) { }
 
 /**
  * getDinosaursAliveMya()
@@ -71,7 +99,7 @@ function getDinosaurDescription(dinosaurs, id) {}
  *  getDinosaursAliveMya(dinosaurs, 65, "unknown-key");
  *  //> ["WHQcpcOj0G"]
  */
-function getDinosaursAliveMya(dinosaurs, mya, key) {}
+function getDinosaursAliveMya(dinosaurs, mya, key) { }
 
 module.exports = {
   getLongestDinosaur,
